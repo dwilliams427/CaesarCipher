@@ -1,6 +1,7 @@
 /*
- * Name: Daniel Williams
- * Date: 10/02/18
+ * Name: Daniel Williams, Nikolas Pavlovic
+ * 
+ * Date: 10/04/18
  * 
  * CAESAR CIPHER
  * 
@@ -38,33 +39,32 @@ public class LinkedList {
 		// TODO Auto-generated method stub
 
 		 
-		/// Get user input, IFF it not numeric and they actually typed something
+		/// Get user input, IFF it is not numeric and they actually typed something
 		 do {
 		 System.out.println("Enter a phrase:");
 		 text = keyboard.nextLine();
 		 } while (text.length() <= 0 || isNumeric(text) == true); 
+		 
+		 String str = text.replaceAll("[^\\p{Alnum}]+", " ");
+		 
 
+			//// INTIALIZES AND POPULATES LIST ////
+			LinkedList.encode(str);
 			
 			
-			LinkedList.head  = new Node(Character.toString(text.charAt(0)));
-//			lowercase.push(text);// adds first letter to head of list
-			
-//			lowercase.head.next = new Node(text.charAt(1));
-			
-			LinkedList.encode(text);
-			
-	       lowercase.printList(); /// PRINTS LIST. USE TO CHECK YOUR LIST IS WORKING
-	       //TODO Find out why print list is adding the first letter twice
-	       
+	        /// PRINTS LIST. USE THIS TO CHECK YOUR LIST IS WORKING
+			System.out.print("Full List: ");
+	       lowercase.printList();
 	       
 	       
 	       //// ENCRYPTION /////
-	       String cipher = encrypt(text, 5);
-	       System.out.println(cipher);
+	       String cipher = LinkedList.encrypt(str, 5);
+	       System.out.println("encryption: " + cipher);
+	       
 	       
 	       /// DECRYPTION ///
-//	       String decrypted = decrypt(cipher, 5);
-//			System.out.println(decrypted);
+	       String decrypted = LinkedList.decrypt(cipher, 5);
+			System.out.println("decryption: " + decrypted);
 	        
 		
 	}
@@ -72,12 +72,11 @@ public class LinkedList {
 	 public static String encode(String text) {
 			String result = "";
 			int length = text.length();
-			char ch;
+			char ch = 0;
 			 for(int i = 0; i < text.length(); ++i) {
-		            ch = text.charAt(i);
-//		            System.out.println(ch);
-		            if(Character.isAlphabetic(ch)) {
-		            	System.out.println(ch);
+				 ch = text.charAt(i);
+		            if(Character.isAlphabetic(ch) || isNumeric(Character.toString(ch)) == false) {
+
 		            
 		             if(Character.isLowerCase(ch)) {
 		                    lowercase.append(Character.toString(text.charAt(i)));
@@ -87,8 +86,12 @@ public class LinkedList {
 		                uppercase.append(Character.toString(text.charAt(i)));
 		            }
 		            }
+		            
+//		            ch = text.charAt(i);
+//		            System.out.println(ch);
 		            result += ch;
 			 }
+			 System.out.println("encode loop result:" + result);
 		        return result;
 		    }
 	 
@@ -112,8 +115,9 @@ public class LinkedList {
 				for (int i =0; i<length; i++) {
 					char ch = cesarCipher.charAt(i);
 					
+					
 				//// user input validation checking for letters only ////
-					if (Character.isLetter(ch)) {
+					if (Character.isLetter(ch) || isNumeric(Character.toString(ch)) == true) {
 						if(Character.isLowerCase(ch)) {//// checking for lowercase ascii /////
 							char c = (char)(ch+letterShift);
 							
@@ -160,16 +164,17 @@ public class LinkedList {
 				
 				int length = cesarCipher.length();
 				
-				// loops through 
+				// loops through each letter of list
 				for (int i =0; i<length; i++) {
 					char ch = cesarCipher.charAt(i);
 					
 				//// user input validation checking for letters only ////
-					if (Character.isLetter(ch)) {
+					if (Character.isLetter(ch) || isNumeric(Character.toString(ch)) == true) {
 						if(Character.isLowerCase(ch)) {//// changed to (ch-letterShift)///
 							char c = (char)(ch-letterShift);
 							
-				/// change to (c < 'a') and (ch + (26-letterShift)) to DEcrypt the message //
+				/// change to (c < 'a') and (ch + (26-letterShift)) to DEcrypt the message  //
+//							[[[[DONT TOUCH]]]]]
 							if(c<'a') {
 								cipherText += (char)(ch + (26 - letterShift));
 							}
@@ -178,10 +183,10 @@ public class LinkedList {
 							}
 						}
 						
-				
+				/// change to (c < 'A') and (ch + (26-letterShift))  [[[[DONT TOUCH]]]//
 						else if (Character.isUpperCase(ch)) {//// changed to (ch-letterShift)///
 							char c = (char)(ch-letterShift);
-				/// change to (c < 'A') and (ch + (26-letterShift)) //
+				
 							if(c <'A') {
 								cipherText += (char)(ch + (26 - letterShift));
 							}
@@ -226,10 +231,11 @@ public class LinkedList {
 	    } 
 	 
 	
-	 // checks to make sure user input is a number or not /////
+	 // checks to make sure user input is not a number /////
 	 public static boolean isNumeric(String strNum) {
 		    try {
 		        int i = Integer.parseInt(strNum);
+		        
 		    } catch (NumberFormatException | NullPointerException nfe) {
 		        return false;
 		    }
@@ -246,6 +252,7 @@ public class LinkedList {
 	            System.out.print(n.text+" "); 
 	            n = n.next; 
 	        } 
+	        System.out.println();
 	    } 
 
 }
