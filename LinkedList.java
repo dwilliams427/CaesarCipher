@@ -1,21 +1,38 @@
-/*
- * Name: Daniel Williams, Nikolas Pavlovic
+/* 
+ * Program: Caesar Cipher
+ *
+ * Developers: Daniel Williams and Nikolas Pavlovic
  * 
  * Date: 10/04/18
  * 
- * CAESAR CIPHER
+ * Version: 1.0.0
  * 
  * 
- * 
+ *                  Description of Program: 
+ *  As you all know by now, a Caesar Cipher is a form of cryptography. 
+ *  Thus, our program asks the user for an input such as a phrase. 
+ *  Then, the program takes that input and encrypts it using an algorithm 
+ *  that shifts each letter of the phrase five letters to the right of the
+ *  where the input letter(s) is located in the alphabet. For instance, 
+ *  if you type the letter “h” it would become “m” once its encrypted. 
+ *  Furthermore, the program can only encrypt letters which include capitalized 
+ *  and non capitalized letters. The program does not encrypt symbols or 
+ *  numbers so there is a an algorithm that prevents the user from inputting
+ *  symbols or numbers. Finally, the program prints what the user initially 
+ *  typed and shows the phrase encrypted with a Caesar Cipher shifted to the 
+ *  right by 5 and it shows the phrase decrypted.
+ *
  * 
  */
+
 
 import java.util.Scanner;
 
 import javax.xml.soap.Node;
 
+
 public class LinkedList {
-	
+
 	static Scanner keyboard = new Scanner(System.in);
 	static Node head;
 	private Node next;
@@ -253,6 +270,6 @@ public class LinkedList {
 	            n = n.next; 
 	        } 
 	        System.out.println();
-	    } 
-
+	 
+	    }
 }
