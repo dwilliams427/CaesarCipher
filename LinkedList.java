@@ -18,7 +18,6 @@
  * 
  * 
  * 
- *********I would prefer this class be split into 2 classes**********
  *
  * This program will take in user input of any sentence they want to type, and will add each character to a 
  * linked list of either lowercase and uppercase, and will encrypt that message an int "lettershift" amount
@@ -97,7 +96,7 @@ public class LinkedList {
 		 text = keyboard.nextLine();
 		 } while (text.length() <= 0 || isNumeric(text) == true); 
 		 
-		 // replaces special characters with whitespace//
+		 // REGEX - replaces special characters with whitespace//
 		 String str = text.replaceAll("[^\\p{Alnum}]+", " ");
 		 
 
@@ -111,6 +110,7 @@ public class LinkedList {
 	      
 			
 			//// ENCRYPTION /////		
+			System.out.println();
 	       String cipher = LinkedList.encrypt(str, 5);
 	       System.out.println("Encrypted Message: " + cipher);
 	       
@@ -313,7 +313,7 @@ public class LinkedList {
 	        /// Allocate the Node, put in the data, set next as null ///
 	        Node new_node = new Node(new_data); 
 	  
-	        /* 4. If the Linked List is empty, then make the 
+	        /* If the Linked List is empty, then make the 
 	              new node as head */
 	        if (head == null) 
 	        { 
@@ -321,16 +321,16 @@ public class LinkedList {
 	            return; 
 	        } 
 	  
-	        /* 4. This new node is going to be the last node, so 
+	        /* This new node is going to be the last node, so 
 	              make next of it as null */
 	        new_node.next = null; 
 	  
-	        /* 5. Else traverse till the last node */
+	        /* Else traverse till the last node */
 	        Node last = head;  
 	        while (last.next != null) 
 	            last = last.next; 
 	  
-	        /* 6. Change the next of last node */
+	        /* Change the next of last node */
 	        last.next = new_node; 
 	        return; 
 	    } 
