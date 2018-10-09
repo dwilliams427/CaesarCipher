@@ -3,7 +3,6 @@
  * Date: @since 2018-10-04
  * @version 1.0
  * 
- * UML
  * CAESAR CIPHER
  * 
  * @param head  initializes the linked list
@@ -14,11 +13,6 @@
  * @param uppercase  Linked list containing uppercase chars
  * 
  * 
- * 
- * 
- * 
- * 
- *
  * This program will take in user input of any sentence they want to type, and will add each character to a 
  * linked list of either lowercase and uppercase, and will encrypt that message an int "lettershift" amount
  *  forwards down the alphabet. For example: A with a letter shift of 3 will become D, B becomes E, and so on. 
@@ -28,18 +22,9 @@
  * The Node and Linked list fields are initialized as Static because we have one instantiation of each list
  * and we are not copying each individual list. This also allows the program to have a smaller "footprint."
  * We also have 2 lists, which will hold our lowercase and uppercase chars.
- * 
- *
- * 
- * 
- * 
- * 
- * 
  */
 
 import java.util.Scanner;
-
-
 
 public class LinkedList {
 	
@@ -52,14 +37,11 @@ public class LinkedList {
 	
 	
 	/**
-	 * 
 	 * @author dlw1l
 	 * We must define Node() in its own separate class in order to instantiate a Node object which will hold 
 	 * our user's data and pointer to the next Node. This class contains a Node() constructor as well
 	 * 
 	 * @see Node
-	 * 
-	 *
 	 */
 	static class Node { 
         String text; 
@@ -335,6 +317,7 @@ public class LinkedList {
 	        return; 
 	    } 
 	 
+	 
 	/**
 	 * @author dlw1l
 	 * @param strNum String
@@ -357,6 +340,7 @@ public class LinkedList {
 		    return true;
 		}
 	 
+	 
 	 /**
 	  * @author dlw1l
 	  * This method simply prints the linked list by printing each element
@@ -364,7 +348,6 @@ public class LinkedList {
 	  */
 	 public void printList() 
 	    { 
-		 
 	        Node n = head; // set list head to n
 	        while (n != null) // go until list is empty
 	        { 
@@ -373,5 +356,4 @@ public class LinkedList {
 	        } 
 	        System.out.println();
 	    } 
-
 }
